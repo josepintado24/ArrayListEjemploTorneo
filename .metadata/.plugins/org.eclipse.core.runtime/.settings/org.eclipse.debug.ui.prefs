@@ -1,0 +1,10 @@
+StringVariablePreferencePage=143,119,119,95,
+eclipse.preferences.version=1
+org.eclipse.debug.ui.MemoryHistoryKnownColor=0,0,0
+org.eclipse.debug.ui.MemoryHistoryUnknownColor=114,119,129
+org.eclipse.debug.ui.PREF_CHANGED_VALUE_BACKGROUND=255,255,0
+org.eclipse.debug.ui.changedDebugElement=255,0,0
+org.eclipse.debug.ui.consoleBackground=16,16,32
+org.eclipse.debug.ui.errorColor=0,255,0
+org.eclipse.debug.ui.inColor=208,208,208
+org.eclipse.debug.ui.outColor=208,208,208
