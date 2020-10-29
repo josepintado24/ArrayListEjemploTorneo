@@ -110,7 +110,7 @@ public class Equipo {
 		return "Equipo [nombre=" + nombre + ", listaJugadores=" + listaJugadores + ", estadistica=" + estadistica
 				+ ", directortec=" + directortec + ", formacionTecnica=" + formacionTecnica + "]";
 	}
-	public boolean sumaEquipo(int arquero, int defensas, int volantes, int delanteros) {
+	private boolean sumaEquipo(int arquero, int defensas, int volantes, int delanteros) {
 		boolean tiene11=false;
 		if ((arquero+defensas+volantes+delanteros)==11) {
 			tiene11=true;
