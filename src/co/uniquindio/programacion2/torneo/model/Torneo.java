@@ -163,5 +163,91 @@ public class Torneo {
 	}
 	
 
+	/*
+	 * TORNEO
+	 * */
+	/**
+	 * Ejemplo02: 2.Realizar las operaciones necesarias para retornar un listado de equipos (ArrayList)
+	 * con los equipos que tengan un director técnico que cuente con más de 3 años de experiencia y su 
+	 * nombre (el del técnico) empiece y termine en vocal, asimismo que haya ganado (el equipo) más de
+	 * tres partidos en el torneo
+	 * 
+	 * Retorna una lista de Equipo "ArrayList<Equipo>" director técnico que cuente con más de 3 años 
+	 * de experiencia y su nombre (el del técnico) empiece y termine en vocal, asimismo que haya ganado
+	 * (el equipo) más de tres partidos en el torneo.
+	 * */
+	private ArrayList<Equipo> listaEquipos; 
+	private DirectorTecnico directortec;
+	public ArrayList<Equipo> aniosExDirector() {
+		ArrayList<Equipo> listaDirector=new ArrayList<Equipo>();
+		for (int i=0;i< listaEquipos.size();i++) {
+			if (listaEquipos.get(i).getDirectortec().getAniosExperienci()>3) {
+				String nombreDirec=listaEquipos.get(i).getDirectortec().getNombre();
+				String primeravocal=nombreDirec.charAt(0)+"";
+				String ultimogmeravocal=nombreDirec.charAt(nombreDirec.length()-1)+"";
+				if ("A".equals(primeravocal) ||"E".equals(primeravocal) || "I".equals(primeravocal) || "O".equals(primeravocal) || "U".equals(primeravocal)){
+					if ("a".equals(ultimogmeravocal)|| "e".equals(ultimogmeravocal)|| "i".equals(ultimogmeravocal) || "o".equals(ultimogmeravocal) ||"u".equals(ultimogmeravocal)){
+						if (listaEquipos.get(i).getEstadistica().getPartidosGanados()>3) {
+							listaDirector.add(listaEquipos.get(i));
+						}
+						
+						
+						//salida=primeravocal;
+					}
+				}
+				
+				
+			}
+		}
+		
+		return listaDirector;
+	}
+	
+	/**
+	 * Ejemplo03: Realizar las operaciones necesarias para retornar una matriz con las estadísticas
+	 * de cada equipo del torneo, cada fila representa un equipo y las columnas representa los datos 
+	 * de las estadísticas del equipo. 
+	 * 
+	 * Retorna: Matriz de tipo String "String[][]" con las estadísticas de cada equipo del torneo
+	 * */
+	public String[][] estadisticaTorneo(){
 
+		String [] [] estadisticaTotal =new String[listaEquipos.size()][8];
+		
+		for (int i=0;i<estadisticaTotal.length;i++) {
+			estadisticaTotal[i][0]=listaEquipos.get(i).getNombre();
+			estadisticaTotal[i][1]=listaEquipos.get(i).getEstadistica().getPartidosJugados()+"";
+			estadisticaTotal[i][2]=listaEquipos.get(i).getEstadistica().getPartidosGanados()+"";
+			estadisticaTotal[i][3]=listaEquipos.get(i).getEstadistica().getPartidosEmpatados()+"";
+			estadisticaTotal[i][4]=listaEquipos.get(i).getEstadistica().getPartidosPerdidos()+"";
+			estadisticaTotal[i][5]=listaEquipos.get(i).getEstadistica().getGolesAFavor()+"";
+			estadisticaTotal[i][6]=listaEquipos.get(i).getEstadistica().getGolesEnContra()+"";
+			estadisticaTotal[i][7]=listaEquipos.get(i).getEstadistica().getPuntosTotales()+"";
+		}
+		return estadisticaTotal;
+	}
+	
+	/**
+	 * Ejemplo04: Realizar las operaciones necesarias para consultar el nombre del equipo que tiene
+	 * mayor puntaje en el torneo, se debe usar la funcionalidad del punto 3, buscando en la matriz
+	 * de estadísticas el equipo con mayor puntaje.
+	 * 
+	 * Retorna: Matriz de tipo String "String[][] con nombre del equipo que tiene mayor puntaje en el torneo"
+	 * */
+
+	public String[][] estadisticasEquipoMayorPuntaje(){
+		String [] [] estadisticaTotal =new String[2][2];
+		int puntajeMayor=Integer.parseInt(estadisticaTorneo()[0][7]);
+		String nombreEquipo=estadisticaTorneo()[0][0];
+		for (int i=0;i<listaEquipos.size();i++) {
+			int Puntaje =Integer.parseInt(estadisticaTorneo()[i][7]);
+			if (Puntaje>puntajeMayor) {
+				puntajeMayor=Puntaje;
+				nombreEquipo=estadisticaTorneo()[i][0];
+			}
+		}
+		estadisticaTotal[0][0]=nombreEquipo;
+		estadisticaTotal[0][1]=puntajeMayor+"";
+		return estadisticaTotal;
+	}
 }
