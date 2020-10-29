@@ -12,7 +12,14 @@ public class Equipo {
 	private ArrayList<Jugador> listaJugadores;
 	private EstadisticaEquipo estadistica;
 	private DirectorTecnico directortec;
+	private String formacionTecnica;
 	
+	public String getFormacionTecnica() {
+		return formacionTecnica;
+	}
+	public void setFormacionTecnica(String formacionTecnica) {
+		this.formacionTecnica = formacionTecnica;
+	}
 	/**
 	 * @param nombre nombre del equipo
 	 */
@@ -95,13 +102,34 @@ public class Equipo {
 		return 0;
 	
 	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Equipo [nombre=" + nombre + ", listaJugadores=" + listaJugadores + ", estadistica=" + estadistica
-				+ ", directortec=" + directortec + "]";
+				+ ", directortec=" + directortec + ", formacionTecnica=" + formacionTecnica + "]";
 	}
-	
-	
+	public boolean sumaEquipo(int arquero, int defensas, int volantes, int delanteros) {
+		boolean tiene11=false;
+		if ((arquero+defensas+volantes+delanteros)==11) {
+			tiene11=true;
+		}
+		return tiene11;
+	}
+	public String [][] retornarNomina(Equipo equipo, int arquero, int defensas, int volantes, int delanteros){
+		String [] [] listatotalJugadores =new String[11][2];
+		if (this.sumaEquipo(arquero, defensas, volantes, delanteros)) {
+			equipo.setFormacionTecnica(arquero+"-"+defensas+"-"+volantes+"-"+delanteros);
+			for(int i=0;i<equipo.getListaJugadores().size();i++) {
+				listatotalJugadores[i][0]=equipo.getListaJugadores().get(i).getNombre();
+			}
+			
+		}
+		return listatotalJugadores;
+	}
+	/*Equipo*/
+
 	
 		
 
